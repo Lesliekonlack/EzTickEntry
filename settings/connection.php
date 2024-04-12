@@ -2,7 +2,7 @@
 // Database credentials
    $servername = "localhost";
    $username = "root";
-   $password = "QlA]rs+N8Gt9";
+   $password = "QlAlrs+N8Gt9";
    $dbname = "EzTickEntry";
    
    // Create connection
