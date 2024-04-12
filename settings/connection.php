@@ -12,5 +12,7 @@
    if ($conn->connect_error) {
        echo "Error connecting";
    }
+   else{
+    echo "connected";
    
 ?>
