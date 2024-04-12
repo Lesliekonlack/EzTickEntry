@@ -1,6 +1,7 @@
 <?php
 session_start(); // Starting the session
 include '../settings/connection.php'; // Ensure this path correctly points to your connection script
+
 $email = $_POST['email'];
 $password = $_POST['password'];
 
