@@ -1,10 +1,7 @@
 <?php
-session_start(); // Starting the session
-include '../settings/connection.php'; // Ensure this path correctly points to your connection script
-
-// Checking if the login form was submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Sanitizing email input to prevent SQL Injection
+    session_start(); // Starting the session
+    include '../settings/connection.php'; // Ensure this path correctly points to your connection script
+    
     $email = mysqli_real_escape_string($connection, $_POST['email']);
     $password = $_POST['password']; // Assuming 'password' is the field name in your form
 
@@ -42,10 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt->close();
     $connection->close();
-} else {
-    // If the form wasn't submitted properly
-    echo 'Please submit the login form.';
-}
+
 ?>
 
 
