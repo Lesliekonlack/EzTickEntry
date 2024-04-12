@@ -13,6 +13,6 @@
        echo "Error connecting";
    }
    else{
-    echo "connected";
+       echo "connected";
    
 ?>
