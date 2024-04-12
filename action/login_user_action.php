@@ -1,5 +1,6 @@
 <?php
 session_start(); // Starting the session
+
 include '../settings/connection.php'; // Ensure this path correctly points to your connection script
 
 // Checking if the login form was submitted
@@ -9,10 +10,8 @@ include '../settings/connection.php'; // Ensure this path correctly points to yo
     $password = $_POST['password']; // Assuming 'password' is the field name in your form
 
     // Adjusting the prepared statement to include FirstName, LastName, and IsSuperAdmin
-    $stmt = $connection->prepare("SELECT UserID, FirstName, LastName, PasswordHash, IsSuperAdmin FROM Users WHERE Email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $stmt ="SELECT UserID, FirstName, LastName, PasswordHash, IsSuperAdmin FROM Users WHERE Email = ?";
+    $result = $stmt->$conn->query($stmt);
 
     // Checking if any row was returned
     if ($result->num_rows > 0) {
