@@ -3,9 +3,9 @@ session_start(); // Starting the session
 include '../settings/connection.php'; // Ensure this path correctly points to your connection script
 
 // Checking if the login form was submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     // Sanitizing email input to prevent SQL Injection
-    $email = mysqli_real_escape_string($connection, $_POST['email']);
+    $email = $_POST['email'];
     $password = $_POST['password']; // Assuming 'password' is the field name in your form
 
     // Adjusting the prepared statement to include FirstName, LastName, and IsSuperAdmin
