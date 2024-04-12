@@ -4,14 +4,16 @@ session_start(); // Starting the session
 include '../settings/connection.php'; // Ensure this path correctly points to your connection script
 
 // Checking if the login form was submitted
-
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitizing email input to prevent SQL Injection
     $email = $_POST['email'];
     $password = $_POST['password']; // Assuming 'password' is the field name in your form
 
     // Adjusting the prepared statement to include FirstName, LastName, and IsSuperAdmin
-    $stmt ="SELECT UserID, FirstName, LastName, PasswordHash, IsSuperAdmin FROM Users WHERE Email = ?";
-    $result = $stmt->$conn->query($stmt);
+    $stmt = $connection->prepare("SELECT UserID, FirstName, LastName, PasswordHash, IsSuperAdmin FROM Users WHERE Email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     // Checking if any row was returned
     if ($result->num_rows > 0) {
@@ -33,6 +35,7 @@ include '../settings/connection.php'; // Ensure this path correctly points to yo
             // If password verification fails
             echo 'Incorrect password.';
             header("Location: ../view/entrypage.php");
+            exit();
         }
     } else {
         // If no record found with the provided email
@@ -46,5 +49,3 @@ include '../settings/connection.php'; // Ensure this path correctly points to yo
     echo 'Please submit the login form.';
 }
 ?>
-
-
