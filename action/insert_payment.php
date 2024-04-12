@@ -1,6 +1,5 @@
 <?php
-include '../settings/connection.php'; // Include the connection settings
-echo "REAChed";
+include '../settings/connection.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['bookingIds']) && is_array($_POST['bookingIds']) && isset($_POST['totalPrice']) && isset($_POST['numberOfBookings'])) {
     $bookingIds = $_POST['bookingIds'];
     $totalPrice = $_POST['totalPrice'];
