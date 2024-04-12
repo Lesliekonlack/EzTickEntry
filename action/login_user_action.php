@@ -1,50 +1,60 @@
 <?php
 session_start(); // Starting the session
 include '../settings/connection.php'; // Ensure this path correctly points to your connection script
+$email = $_POST['email'];
+$password = $_POST['password'];
 
-// Checking if the login form was submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Sanitizing email input to prevent SQL Injection
-    $email = mysqli_real_escape_string($connection, $_POST['email']);
-    $password = $_POST['password']; // Assuming 'password' is the field name in your form
+// Write a query to SELECT a record from the People table using the email
+$sql = "SELECT * FROM Users WHERE email = '$email'";
 
-    // Adjusting the prepared statement to include FirstName, LastName, and IsSuperAdmin
-    $stmt = $connection->prepare("SELECT UserID, FirstName, LastName, PasswordHash, IsSuperAdmin FROM Users WHERE Email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+// Execute the query
+$result = $conn->query($sql);
 
-    // Checking if any row was returned
-    if ($result->num_rows > 0) {
-        // Fetching the record
-        $user = $result->fetch_assoc();
-
-        // Verifying the password user provided against the hash stored in the database
-        if (password_verify($password, $user['PasswordHash'])) {
-            // If it's a match, storing user's details in the session
-            $_SESSION['user_id'] = $user['UserID'];
-            $_SESSION['fname'] = $user['FirstName'];
-            $_SESSION['lname'] = $user['LastName'];
-            $_SESSION['is_super_admin'] = $user['IsSuperAdmin']; // Storing IsSuperAdmin in the session
-
-            // Redirecting to a specific page after successful login
-            header("Location: ../view/loginentrypage.php");
-            exit();
-        } else {
-            // If password verification fails
-            echo 'Incorrect password.';
-            header("Location: ../view/entrypage.php");
-        }
-    } else {
-        // If no record found with the provided email
-        echo 'User not registered or incorrect email.';
-    }
-
-    $stmt->close();
-    $connection->close();
-} else {
-    // If the form wasn't submitted properly
-    echo 'Please submit the login form.';
+// Check if any row was returned
+if ($result->num_rows == 0) {
+    
+    echo '<script>
+            alert("User email is incorrect or not registered!");
+            setTimeout(function() {
+                window.location.href = "../g_view/home.php";
+            }, 100); // Delay in milliseconds
+          </script>';
+    exit(); // Make sure to exit after the alert and redirection
 }
+
+
+// Fetch the record
+$row = $result->fetch_assoc();
+
+// Verify password user provided against database record
+if (password_verify($password, $row['password'])) {
+    // Create a session for user id and role id
+    $_SESSION['user_id'] = $row['user_id']; 
+    $_SESSION['role_id'] = $row['roleId']; 
+    $_SESSION['fname'] = $row['fname'];
+    $_SESSION['lname'] = $row['lname'];
+
+    // Redirect based on role
+    if ($_SESSION['role_id'] == 2) { 
+        header("Location: ../view/loginentrypage.php");
+        exit();
+    } else { 
+        header("Location: ../g_view/admin.php");
+        exit();
+    }
+} else {
+    // Incorrect password
+    echo '<script>
+            alert("Incorrect password!");
+            setTimeout(function() {
+                window.location.href = "../g_view/home.php";
+            }, 100); // Delay in milliseconds
+          </script>';
+    exit(); // Make sure to exit after the alert and redirection
+}
+
+
+
+  
 ?>
 
