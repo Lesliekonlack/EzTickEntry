@@ -17,5 +17,5 @@
 
 // Always good to close the database connection if not needed anymore
 
-?>
+
 
