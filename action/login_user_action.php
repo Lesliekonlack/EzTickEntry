@@ -1,23 +1,29 @@
 <?php
-session_start(); // Starting the session
+session_start(); 
 
-include '../settings/connection.php'; // Ensure this path correctly points to your connection script
-
-// Sanitizing email input to prevent SQL Injection
+include '../settings/connection.php'; 
 $email = $_POST['email'];
 $password = $_POST['password']; // Assuming 'password' is the field name in your form
 
 // Adjusting the prepared statement to include FirstName, LastName, and IsSuperAdmin
-$stmt = $connection->prepare("SELECT UserID, FirstName, LastName, PasswordHash, IsSuperAdmin FROM Users WHERE Email = ?");
-$stmt->bind_param("s", $email);
-$stmt->execute();
-$result = $stmt->get_result();
+// Write a query to SELECT a record from the People table using the email
+$sql = "SELECT * FROM Users WHERE Email = '$email'";
 
-// Checking if any row was returned
-if ($result->num_rows > 0) {
-    // Fetching the record
-    $user = $result->fetch_assoc();
+// Execute the query
+$result = $conn->query($sql);
 
+// Check if any row was returned
+if ($result->num_rows == 0) {
+    
+    echo '<script>
+            alert("User email is incorrect or not registered!");
+            setTimeout(function() {
+                window.location.href = "../g_view/home.php";
+            }, 100); // Delay in milliseconds
+          </script>';
+    exit(); // Make sure to exit after the alert and redirection
+}
+else{
     // Verifying the password user provided against the hash stored in the database
     if (password_verify($password, $user['PasswordHash'])) {
         // If it's a match, storing user's details in the session
