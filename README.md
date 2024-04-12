@@ -1,7 +1,7 @@
 
 # EzTickEntry
 
-Welcome to EzTickEntry, a dynamic web application designed for event management, specifically focusing on ticket sales and attendee management for live performances and festivals.
+Welcome to EzTickEntry, a dynamic web application designed for event management, specifically focusing on ticket sales and attendee management for live performances and festivals and cinema events.
 
 ## Features
 
@@ -62,38 +62,8 @@ define('DB_DATABASE', 'eztickentry');
 
 Import the `eztickentry.sql` file into your MySQL database. This file contains the necessary database schema and initial data.
 
-```bash
-mysql -u your_username -p eztickentry < path_to_eztickentry.sql
-```
+## Author
 
-6. **Run your server:**
+- **Leslie Konlack** -
 
-Depending on your setup, start your Apache or Nginx server.
 
-### Usage
-
-Describe how to use your application with examples of getting started with the app's core functionalities.
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://github.com/yourusername/EzTickEntry/blob/main/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/yourusername/EzTickEntry/tags).
-
-## Authors
-
-- **Your Name** - *Initial work* - [YourUsername](https://github.com/yourusername)
-
-See also the list of [contributors](https://github.com/yourusername/EzTickEntry/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
-
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
