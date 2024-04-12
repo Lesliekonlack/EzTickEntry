@@ -5,7 +5,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 // Write a query to SELECT a record from the People table using the email
-$sql = "SELECT * FROM Users WHERE email = '$email'";
+$sql = "SELECT * FROM Users WHERE Email = '$email'";
 
 // Execute the query
 $result = $conn->query($sql);
