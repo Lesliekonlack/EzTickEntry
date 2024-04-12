@@ -16,7 +16,7 @@ if ($result->num_rows == 0) {
     echo '<script>
             alert("User email is incorrect or not registered!");
             setTimeout(function() {
-                window.location.href = "../g_view/home.php";
+                window.location.href = "../view/entrypage.php";
             }, 100); // Delay in milliseconds
           </script>';
     exit(); // Make sure to exit after the alert and redirection
@@ -33,21 +33,16 @@ if (password_verify($password, $row['password'])) {
     $_SESSION['role_id'] = $row['roleId']; 
     $_SESSION['fname'] = $row['fname'];
     $_SESSION['lname'] = $row['lname'];
-
-    // Redirect based on role
-    if ($_SESSION['role_id'] == 2) { 
-        header("Location: ../view/loginentrypage.php");
-        exit();
-    } else { 
-        header("Location: ../g_view/admin.php");
-        exit();
-    }
+        
+    header("Location: ../view/loginentrypage.php");
+    exit();
+    
 } else {
     // Incorrect password
     echo '<script>
             alert("Incorrect password!");
             setTimeout(function() {
-                window.location.href = "../g_view/home.php";
+                window.location.href = "../view/enterypage.php";
             }, 100); // Delay in milliseconds
           </script>';
     exit(); // Make sure to exit after the alert and redirection
