@@ -10,12 +10,12 @@
 <div class="form-container">
     <div class="logo">EzTickEntry</div>
     <h2>Welcome Back</h2>
-    <?php if ($_SERVER['REQUEST_URI'] == "..action/register_user_action.php"): ?>
+    <?php if ($_SERVER['REQUEST_URI'] == "./action/register_user_action.php"): ?>
         <p>Don't have an account? <a href="register.php">Sign Up</a></p>
     <?php else: ?>
         <p>Don't have an account? <a href="register.php">Sign Up</a></p>
     <?php endif; ?>
-    <form id="loginForm" action="../action/login_user_action.php" method="post">
+    <form id="loginForm" action="./action/login_user_action.php" method="post">
         <input type="email" name="email" placeholder="Email Address" required>
         <input type="password" name="password" placeholder="Password" required>
         <a href="forgot_password.php" class="forgot-password">Forgot your password?</a>
