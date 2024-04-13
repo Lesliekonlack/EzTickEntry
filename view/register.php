@@ -13,7 +13,7 @@
     <h2>Create Account</h2>
     <p>Already have an account? <a href="login.php">Log In</a></p>
 
-    <form id="registrationForm" action="../action/register_user_action.php" method="post" onsubmit="return validateRegistrationForm()">
+    <form id="registrationForm" action="./action/register_user_action.php" method="post" onsubmit="return validateRegistrationForm()">
         <div class="form-row">
             <input  type="text" id= "firstName" name="firstName" placeholder="First Name" required>
             <input type="text"id= "lastname" name="lastName" placeholder="Last Name" required>
