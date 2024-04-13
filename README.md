@@ -42,10 +42,6 @@ git clone https://github.com/yourusername/EzTickEntry.git
 cd EzTickEntry
 ```
 
-3. **Install dependencies:**
-
-(Include commands if your project requires external libraries or frameworks)
-
 4. **Configure your environment:**
 
 Copy the `settings/connection.example.php` to `settings/connection.php` and adjust the database settings.
