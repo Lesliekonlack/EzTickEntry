@@ -1,5 +1,4 @@
 <?php
-session_start(); // Start the session to access session variables
 
 require_once '../settings/connection.php'; // Include your database connection script
 require_once '../settings/core.php'; // Include core functionalities
@@ -33,11 +32,13 @@ try {
     // Commit transaction
     $connection->commit();
     echo "Event status updated to 'Cancelled' successfully.";
+    header("location: ../view/eventsmanagements.php");
 
 } catch (Exception $e) {
     // Rollback transaction on error
     $connection->rollback();
     echo "Transaction failed: " . $e->getMessage();
+    header("location: ../view/eventsmanagements.php");
 }
 
 $connection->close(); // Close the database connection
