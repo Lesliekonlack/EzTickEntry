@@ -78,10 +78,12 @@ if (isset($_FILES['event_image']['name']) && $_FILES['event_image']['error'] == 
 $venueStmt = $connection->prepare("INSERT INTO Venues (Name, CountryID, Location, Capacity, ContactInfo) VALUES (?, ?, ?, ?, ?)");
 if (!$venueStmt) {
     die("Error preparing venue statement: " . $connection->error);
+    header("Location: ../view/hostcinemaevent.php");
 }
 $venueStmt->bind_param("sssii", $venueName, $venueCountry, $venueLocation, $venueCapacity, $venueContact);
 if (!$venueStmt->execute()) {
     die("Error executing venue statement: " . $venueStmt->error);
+    header("Location: ../view/hostcinemaevent.php");
 }
 $venueID = $venueStmt->insert_id;
 $venueStmt->close();
@@ -89,12 +91,14 @@ $venueStmt->close();
 // Check for any errors before inserting event and image
 if (!empty($errors)) {
     die("Errors: " . implode(", ", $errors));
+    header("Location: ../view/hostcinemaevent.php");
 }
 
 // Insert Event with the new VenueID
 $eventStmt = $connection->prepare("INSERT INTO Events (OrganizerID, CategoryID, Title, Description, StartTime, EndTime, VenueID, EventStatusID, CreationDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())");
 if (!$eventStmt) {
     die("Error preparing event statement: " . $connection->error);
+    header("Location: ../view/hostcinemaevent.php");
 }
 $eventStmt->bind_param("iissssii", $organizerID, $category_id, $title, $description, $startTime, $endTime, $venueID, $defaultEventStatusID);
 if ($eventStmt->execute()) {
@@ -102,6 +106,7 @@ if ($eventStmt->execute()) {
     echo "Event inserted successfully with Venue ID: $venueID. Event ID: $eventID.<br>";
 } else {
     die("Error executing event statement: " . $eventStmt->error);
+    header("Location: ../view/hostcinemaevent.php");
 }
 $eventStmt->close();
 
@@ -110,10 +115,12 @@ if ($uploadStatus) {
     $imageStmt = $connection->prepare("INSERT INTO Images (EventID, ImagePath, ImageType, UploadDate) VALUES (?, ?, ?, NOW())");
     if (!$imageStmt) {
         die("Error preparing image statement: " . $connection->error);
+        header("Location: ../view/hostcinemaevent.php");
     }
     $imageStmt->bind_param("iss", $eventID, $imageFilePath, $imageFileType);
     if (!$imageStmt->execute()) {
         die("Error executing image statement: " . $imageStmt->error);
+        header("Location: ../view/hostcinemaevent.php");
     }
     $imageStmt->close();
     echo "Image uploaded successfully.<br>";
