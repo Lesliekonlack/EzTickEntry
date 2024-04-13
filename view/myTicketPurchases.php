@@ -94,7 +94,6 @@ if (isset($_POST['confirmPayment'])) {
     
   <div class="user-dropdown">
   <?php
-    session_start();
     if (isset($_SESSION['fname']) && isset($_SESSION['lname'])) {
       echo '<button class="user-name-button"><i class="fa fa-user-circle" aria-hidden="true"></i> ' . htmlspecialchars($_SESSION['fname']) . ' ' . htmlspecialchars($_SESSION['lname']) . ' <i class="fa fa-chevron-down"></i></button>';
     } else {
