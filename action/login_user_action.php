@@ -38,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // If no record found with the provided email
         echo 'User not registered or incorrect email.';
-        header("Location: ../view/loginentrypage.php");
     }
 
     $stmt->close();
@@ -48,4 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo 'Please submit the login form.';
 }
 ?>
+
+
 
