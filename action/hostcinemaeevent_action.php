@@ -1,5 +1,4 @@
 <?php
-session_start(); // Start the session to access session variables
 
 require_once '../settings/connection.php'; // Include your database connection script
 require_once '../settings/core.php'; // Include core functionalities
@@ -118,6 +117,7 @@ if ($uploadStatus) {
     }
     $imageStmt->close();
     echo "Image uploaded successfully.<br>";
+    header("Location: ../view/eventsmanagements.php");
 }
 
 $connection->close(); // Close the database connection
