@@ -1,4 +1,5 @@
 <?php
+session_start(); // Ensure session_start() is only called once at the top
 
 include '../settings/connection.php'; 
 include '../settings/core.php';
@@ -120,7 +121,7 @@ if ($result && $result->num_rows > 0) {
     
   <div class="user-dropdown">
   <?php
-  
+    session_start();
     if (isset($_SESSION['fname']) && isset($_SESSION['lname'])) {
       echo '<button class="user-name-button"><i class="fa fa-user-circle" aria-hidden="true"></i> ' . htmlspecialchars($_SESSION['fname']) . ' ' . htmlspecialchars($_SESSION['lname']) . ' <i class="fa fa-chevron-down"></i></button>';
     } else {
@@ -176,7 +177,7 @@ if ($result && $result->num_rows > 0) {
                         <!-- Manage Tickets & Seats button -->
                    
 
-                       <a href="WhoAttended.php?event_id=<?php echo $event['EventID']; ?>" class="btn view-attendees-btn2">See Who Attended</a>
+                       <a href="whoattended.php?event_id=<?php echo $event['EventID']; ?>" class="btn view-attendees-btn2">See Who Attended</a>
 
 
                        
