@@ -33,7 +33,7 @@
 <div id="registerModal" class="rmodal" style="z-index:1000000;">
   <div class="rmodal-content"style="width: 390px;">
     <span class="close" onclick="closeModal()">&times;</span>
-    <?php include 'register.php'; ?>
+    <?php include './view/register.php'; ?>
   </div>
 </div>
 
@@ -41,7 +41,7 @@
 <div id="loginModal" class="lmodal" style="z-index:1000000;">
   <div class="lmodal-content" style="width: 390px;">
     <span class="close" onclick="closeLoginModal()">&times;</span>
-    <?php include 'login.php'; ?>
+    <?php include './view/login.php'; ?>
   </div>
 </div>
 
