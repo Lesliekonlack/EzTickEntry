@@ -11,9 +11,7 @@
     // Check connection
     if ($conn->connect_error) {
         echo "Error connecting";
-    } else {
-        echo "Connected";
-    }
+    } 
 
 // Always good to close the database connection if not needed anymore
 
