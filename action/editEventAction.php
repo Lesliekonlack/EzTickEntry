@@ -89,6 +89,7 @@ try {
 
     // Commit transaction
     $connection->commit();
+    header("Location: ../view/eventsmanagements.php");
     echo "Event, venue, and image (if provided) updated successfully.";
 
 } catch (Exception $e) {
