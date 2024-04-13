@@ -250,11 +250,6 @@ background: #f4f4f4;
     }
     ?>
     <div class="dropdown-content">
-      <a href="upcoming_events.php">Upcoming</a>
-      <a href="orders.php">Orders</a>
-      <a href="waitlists.php">Waitlists</a>
-      <a href="memberships.php">Memberships</a>
-      <!-- ... other links ... -->
       <a href="logout.php">Log Out</a>
     </div>
 
