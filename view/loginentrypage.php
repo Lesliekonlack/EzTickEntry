@@ -1,5 +1,4 @@
 <?php
-session_start(); // Ensure session_start() is only called once at the top
 
 include '../settings/connection.php'; 
 include '../settings/core.php';
@@ -92,10 +91,8 @@ if ($eventId && array_key_exists($eventId, $myEvents)) {
   
 <?php
 
-include_once '../settings/core.php'; 
 checkLogin();
 
-include_once '../settings/connection.php'; 
 ?>
 
 <div class="navbar">
@@ -115,7 +112,7 @@ include_once '../settings/connection.php';
     <button onclick="changeLanguage('FR')">FR</button>
   </div>
   <?php
-session_start();
+
 
 // Check if the user is logged in
 if (isset($_SESSION['user_id'])) {
@@ -142,7 +139,7 @@ if (isset($_SESSION['user_id'])) {
   <!-- User Dropdown Menu -->
   <div class="user-dropdown">
   <?php
-    session_start();
+   
     if (isset($_SESSION['fname']) && isset($_SESSION['lname'])) {
       echo '<button class="user-name-button"><i class="fa fa-user-circle" aria-hidden="true"></i> ' . htmlspecialchars($_SESSION['fname']) . ' ' . htmlspecialchars($_SESSION['lname']) . ' <i class="fa fa-chevron-down"></i></button>';
     } else {
@@ -1103,5 +1100,3 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 </body>
 </html>
-
-
