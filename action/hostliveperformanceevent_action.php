@@ -6,7 +6,7 @@ require_once '../settings/core.php'; // Include core functionalities
 
 checkLogin(); // Ensure the user is logged in before proceeding
 
-// Enable error reporting for debugging
+// Enable error reporting for debugging 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
