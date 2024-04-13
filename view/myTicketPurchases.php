@@ -101,8 +101,6 @@ if (isset($_POST['confirmPayment'])) {
     }
     ?>
     <div class="dropdown-content">
-      <a href="upcomingevents.php">Upcoming</a>
-      <!-- ... other links ... -->
       <a href="logout.php">Log Out</a>
     </div>
 
