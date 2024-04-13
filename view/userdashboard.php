@@ -65,8 +65,6 @@ if ($result && $result->num_rows > 0) {
     }
     ?>
     <div class="dropdown-content">
-      <a href="upcomingevents.php">Upcoming</a>
-      <!-- ... other links ... -->
       <a href="logout.php">Log Out</a>
     </div>
 
