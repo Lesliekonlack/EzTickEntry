@@ -21,7 +21,10 @@
         <input type="email" id= "email" name="email" placeholder="Email Address" required>
         <input type="tel" id= "phone" name="tel" placeholder="tel" required>
 
+        <!-- Date of Birth Field -->
+        <label for="dob">Date of Birth:</label>
         <input type="date" id="dob" name="dob" placeholder="Date of Birth" required>
+
 
     <!-- Gender selection -->
     <select id="gender" name="gender" required>
