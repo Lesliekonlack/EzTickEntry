@@ -42,7 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Commit the transaction
         $connection->commit();
-        echo "Ticket tiers updated successfully.";
+        header('Location: ../view/eventsmanagements.php');
+        exit();
     } catch (Exception $e) {
         // Roll back the transaction on error
         $connection->rollback();
@@ -53,5 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Invalid request.";
 }
+
+?>
+
 
 ?>
